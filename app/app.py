@@ -6,8 +6,8 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load model and columns
-model = pickle.load(open("C:/Users/Hiruni/OneDrive/Desktop/thyroid_app/models/thyroid_model.pkl", "rb"))
-columns = pickle.load(open("C:/Users/Hiruni/OneDrive/Desktop/thyroid_app/models/model_columns.pkl", "rb"))
+model = pickle.load(open(r"C:\Users\LUXAN\Desktop\thyroid-cancer-prediction\app\models\thyroid_model.pkl", "rb"))
+columns = pickle.load(open(r"C:\Users\LUXAN\Desktop\thyroid-cancer-prediction\app\models\model_columns.pkl", "rb"))
 
 @app.route('/')
 def home():
