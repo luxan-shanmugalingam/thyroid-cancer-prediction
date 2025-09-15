@@ -4,6 +4,12 @@
 
 This project explores the use of machine learning for non-invasive, preoperative risk stratification of thyroid malignancy using basic demographic and clinical information. Using a comprehensive dataset of over 210,000 patient records, this study aims to build a predictive model to assist clinicians in making faster, more accurate diagnostic decisions. The project involves extensive exploratory data analysis (EDA), various feature selection techniques, and the implementation and evaluation of several machine learning models in both Python and R.
 
+## 🚀 Demo
+
+Here is a live demo of the Flask web application in action. The app takes user inputs for various clinical and demographic features and predicts the likelihood of thyroid malignancy.
+
+![App Demo](assets/demo.gif)
+
 ## ✨ Features
 
 * **Comprehensive EDA**: In-depth analysis of feature distributions, correlations, and associations with the diagnosis.
