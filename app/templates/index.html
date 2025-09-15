@@ -1,0 +1,337 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thyroid Risk Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ThyroPredict</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#predict">Predict</a></li>
+                <li><a href="#treatments">Treatments</a></li>
+                <li><a href="#contact">Contact</a></li>
+                
+            </ul>
+        </nav>
+        
+    </header>
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Prediction of Your Thyroid Tumor – A Step toward Action</h1>
+            <p>Thyroid tumors can often be a source of worry, but knowing whether it’s malignant or benign can bring clarity and guide your next steps.</p>
+            <a href="#predict" class="btn">Get Started</a>
+        </div>
+    </section>
+
+     
+    <section id ="about" class="about">
+          <!-- Essence -->
+          <div class="about-content">
+            <div class="about-img">
+              <img src="{{ url_for('static', filename='intro.jpg') }}" alt="Essence of Our Endeavor">
+            </div>
+            <div class="about-text">
+              <h2>Essence of our endeavor</h2>
+              <p>Our advanced prediction model, built using cutting-edge machine learning algorithms, assesses your thyroid tumor's risk based on key health factors, helping you determine whether your tumor is malignant or benign. With early and accurate predictions, you can make informed decisions about your health with confidence.</p>
+            </div>
+          </div>
+      
+          <!-- How It Works -->
+          <div class="about-content">
+            <div class="about-img">
+              <img src="{{ url_for('static', filename='how_it_works.jpg') }}" alt="How It Works">
+            </div>
+            <div class="about-text">
+              <h2>How It Works</h2>
+              <p>Our thyroid tumor prediction tool uses the XGBoost technique to analyze your medical data. By inputting key health indicators, the model evaluates the likelihood that your thyroid tumor is benign or malignant. The system provides an easy-to-understand risk assessment, giving you valuable insights and helping you take informed action.</p>
+            </div>
+          </div>
+      
+          <!-- Benign or Malignant Insight -->
+          <div class="about-content">
+            <div class="about-img">
+              <img src="{{ url_for('static', filename='benign_and_malignant.png') }}" alt="Benign vs Malignant">
+            </div>
+            <div class="about-text">
+              <h2>Benign or Malignant - Insight</h2>
+              <p>Benign thyroid tumors are non-cancerous and usually grow slowly. Malignant tumors are cancerous, can grow quickly, and may spread to other parts of the body. Identifying whether the tumor is benign or malignant is critical for timely treatment planning.</p>
+            </div>
+          </div>
+      
+          <!-- Symptoms -->
+          <div class="about-content">
+            <div class="about-img">
+              <img src="{{ url_for('static', filename='symptoms.jpg') }}" alt="Symptoms of Thyroid Tumors">
+            </div>
+            <div class="about-text">
+              <h2>Common Symptoms of Thyroid Tumors</h2>
+              <ul>
+                <li>🔹 A lump in the neck</li>
+                <li>🔹 Difficulty swallowing or breathing</li>
+                <li>🔹 Hoarseness or voice changes</li>
+                <li>🔹 Swollen lymph nodes in the neck</li>
+                <li>🔹 Pain in the neck or throat</li>
+                <li>🔹 Fatigue or unexplained weight changes</li>
+              </ul>
+            </div>
+          </div>
+      
+          <!-- Risk Factors -->
+          <div class="about-content">
+            <div class="about-img">
+              <img src="{{ url_for('static', filename='risk_factors.jpg') }}" alt="Risk Factors">
+            </div>
+            <div class="about-text">
+              <h2>Significant Factors for Tumor Prediction</h2>
+              <ul>
+                <li>🌍 Country & Ethnicity</li>
+                <li>👨‍👩‍👧 Family History</li>
+                <li>🧂 Iodine Deficiency</li>
+                <li>🩸 Diabetes and Obesity</li>
+                <li>🚬 Smoking</li>
+                <li>👩 Gender & Age</li>
+                <li>☢️ Radiation Exposure</li>
+              </ul>
+            </div>
+          </div>
+      
+          
+      </section>
+      
+    
+
+      <section id="predict" class="section1">
+        <h2>Predict Thyroid Diagnosis</h2>
+        <form action="/predict" method="POST" class="prediction-form">
+      
+          <div class="form-row">
+            <div class="form-group">
+              <label for="Age">Age</label>
+              <input type="number" name="Age" id="Age" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="Gender">Gender</label>
+              <select name="Gender" id="Gender">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="TSH_Level">TSH Level</label>
+              <input type="number" step="any" name="TSH_Level" id="TSH_Level" required>
+            </div>
+          </div>
+      
+          <div class="form-row">
+            <div class="form-group">
+              <label for="T3_Level">T3 Level</label>
+              <input type="number" step="any" name="T3_Level" id="T3_Level" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="T4_Level">T4 Level</label>
+              <input type="number" step="any" name="T4_Level" id="T4_Level" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="Nodule_Size">Nodule Size</label>
+              <input type="number" step="any" name="Nodule_Size" id="Nodule_Size" required>
+            </div>
+          </div>
+      
+          <div class="form-row">
+            <div class="form-group">
+              <label for="Family_History">Family History</label>
+              <select name="Family_History" id="Family_History">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="Radiation_Exposure">Radiation Exposure</label>
+              <select name="Radiation_Exposure" id="Radiation_Exposure">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="Iodine_Deficiency">Iodine Deficiency</label>
+              <select name="Iodine_Deficiency" id="Iodine_Deficiency">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+      
+          <div class="form-row">
+            <div class="form-group">
+              <label for="Smoking">Smoking</label>
+              <select name="Smoking" id="Smoking">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="Obesity">Obesity</label>
+              <select name="Obesity" id="Obesity">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="Diabetes">Diabetes</label>
+              <select name="Diabetes" id="Diabetes">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+      
+          <div class="form-row">
+            <div class="form-group">
+              <label for="Country">Country</label>
+              <select name="Country" id="Country">
+                <option>India</option>
+                <option>USA</option>
+                <option>Germany</option>
+                <option>UK</option>
+                <option>Japan</option>
+                <option>Brazil</option>
+                <option>South Korea</option>
+                <option>Russia</option>
+                <option>Nigeria</option>
+                <option>China</option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="Ethnicity">Ethnicity</label>
+              <select name="Ethnicity" id="Ethnicity">
+                <option>Asian</option>
+                <option>Caucasian</option>
+                <option>Middle Eastern</option>
+                <option>Hispanic</option>
+                <option>African</option>
+              </select>
+            </div>
+      
+            <div class="form-group" style="display: flex; align-items: flex-end;">
+              <button type="submit" class="btn" style="width: 100%;">Predict</button>
+            </div>
+          </div>
+      
+          <p id="prediction-text" class="prediction-result highlight">
+            Predicted Diagnosis: {{ prediction_text if prediction_text else '?' }}
+          </p>
+          
+      
+        </form>
+      </section>
+      
+
+
+
+  
+
+      <section id="treatments" class="section guidance">
+        <h2>Treatment Guidance</h2>
+    
+        <!-- Benign Guidance -->
+        <div class="guidance-content">
+            <div class="video-wrapper">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/x79Of_yCc_M?si=TidDXQvyZiacTWr4"
+                    title="Benign Thyroid Nodule Explanation" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="guidance-text">
+                <h2>💙 What to Do if It's Benign</h2>
+                <ul>
+                    <li>✅ Regular check-ups with your doctor</li>
+                    <li>🍎 Maintain a healthy diet and lifestyle</li>
+                    <li>🧘‍♀️ Manage stress and keep your hormones balanced</li>
+                    <li>🩺 Monitor for any changes and follow-up as advised</li>
+                </ul>
+                
+            </div>
+        </div>
+    
+        <!-- Malignant Guidance -->
+        <div class="guidance-content">
+            <div class="video-wrapper">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/B-r2r3AblC0?si=aV6C2OEjXAsJrm-n"
+                    title="Malignant Thyroid Cancer Treatment" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="guidance-text">
+                <h2>❤️ What to Do if It's Malignant</h2>
+                <ul>
+                    <li>📞 Consult an endocrinologist or oncologist immediately</li>
+                    <li>🧪 Further medical tests like biopsy or scans may be needed</li>
+                    <li>💊 Discuss treatment options (surgery, radioactive iodine, etc.)</li>
+                    <li>🤝 Get support from family, friends, and health professionals</li>
+                </ul>
+                
+            </div>
+        </div>
+    </section>
+    
+      
+
+      <section id="contact">
+        <h2>Get In Touch With Us</h2>
+        <div class="contact-container">
+          
+          <!-- Left: Form -->
+          <form class="contact-form">
+            <h3>Send Us a Message</h3>
+            <div class="form-row">
+              <input type="text" placeholder="Your full name" required>
+              <input type="email" placeholder="example@domain.com" required>
+            </div>
+            <textarea rows="2" placeholder="How can we help you?" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+      
+          <!-- Right: Contact Info -->
+          <div class="contact-info">
+            <h3>Contact Details</h3>
+            <p><strong>Email:</strong> support@thyropredict.com</p>
+            <p><strong>Phone:</strong> +1 234 567 8900</p>
+            <p><strong>Address:</strong> 123 BCA Lane, Health City, Sri Lanka</p>
+            <p>We're here to support you on your wellness journey 🌿</p>
+          </div>
+          
+        </div>
+      </section>
+      
+      
+
+    <footer>
+        <p>&copy; 2025 ThyroPredict. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function () {
+          const result = document.getElementById("prediction-text");
+          if (result) {
+            result.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        };
+      </script>
+    
+      
+    
+</body>
+</html>
